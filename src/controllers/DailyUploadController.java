@@ -48,14 +48,14 @@ public class DailyUploadController extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		 	String UPLOAD_DIRECTORY="F:\\uploads\\audio";
+		 	String UPLOAD_DIRECTORY="F:\\uploads\\audio"; //from web.xml, tomcat process has rw access to the path
 		    final Part filePart = request.getPart("file");
-		    String fileName = filePart.getSubmittedFileName();
+		    String fileName = filePart.getSubmittedFileName(); //generate your own unique filename
 		    Path uploadDir = Paths.get(UPLOAD_DIRECTORY);
 		    try {
 		    Files.createDirectory(uploadDir);}
 		    catch (FileAlreadyExistsException fe) {}
-		    System.out.println(uploadDir.toString());
+//		    System.out.println(uploadDir.toString());
 		    Path uploadPath=Paths.get(uploadDir.toString(),fileName);
 		    filePart.write(uploadPath.toString());
 		    

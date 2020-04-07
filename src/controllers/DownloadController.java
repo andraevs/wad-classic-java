@@ -41,13 +41,11 @@ public class DownloadController extends HttpServlet {
             mimeType = "application/octet-stream";
 	}
         
-        System.out.println("MIME type: " + mimeType);
+//        System.out.println("MIME type: " + mimeType);
         
         // modifies response
         response.setContentType(mimeType);
         
-        // modifies response
-        response.setContentType(mimeType);
         response.setContentLengthLong(Files.size(filePath));
 
         // forces download
